@@ -1,7 +1,5 @@
-import { ICreateCommentRequest, IComment } from "../models/models";
+import { IComment } from "../models/models";
 
-export const createCommentRequest = (
-  comment: ICreateCommentRequest
-): IComment => {
+export const createCommentRequest = (comment: IComment): IComment => {
   return { ...comment };
 };

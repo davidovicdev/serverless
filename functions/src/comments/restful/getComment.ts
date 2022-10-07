@@ -5,10 +5,7 @@ const getComment = createRestuflFunction({
   method: MethodEnum.GET,
   callback: async (req, res) => {
     try {
-      /* const query = db.collection("comments");
-      const querySnapshot = await query.get(); */
       const docId = req.params["0"];
-
       const query = db.collection("comments").doc(docId);
       const querySnapshot = await query.get();
       const data: {
@@ -19,12 +16,7 @@ const getComment = createRestuflFunction({
         id: docId,
         comment: querySnapshot.data(),
       });
-      /*   querySnapshot.forEach((doc) =>
-        data.push({
-          id: doc.id,
-          comment: doc.data(),
-        })
-      ); */
+
       res.status(200).json({
         data,
       });

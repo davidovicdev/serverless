@@ -1,8 +1,8 @@
 import db from "../../config/firestore.config";
 import createRestuflFunction, { MethodEnum } from "../../utils/helpers";
 import { createCommentRequest } from "../helpers/helpers";
-import { ICreateCommentRequest } from "../models/models";
-
+// import { IComment } from "../models/models";
+/* 
 var badWords = [
   "pussy",
   "dick",
@@ -12,13 +12,13 @@ var badWords = [
   "fucking",
   "nigga",
   "fuck off",
-];
+]; */
 const createComment = createRestuflFunction({
   method: MethodEnum.POST,
   callback: async (req, res) => {
     try {
-      const body: ICreateCommentRequest = req.body;
-      var output = "";
+      /* const body: IComment = req.body;
+       var output = "";
       var wordsInComment = body.comment.split(" ");
       for (let i = 0; i < wordsInComment.length; i++) {
         if (i == 0) {
@@ -30,9 +30,9 @@ const createComment = createRestuflFunction({
             ? " ***** "
             : ` ${wordsInComment[i]} `;
         }
-      }
+      } */
       const comment = createCommentRequest({
-        comment: output,
+        comment: req.body,
       });
 
       const ref = await db.collection("comments").add(comment);
